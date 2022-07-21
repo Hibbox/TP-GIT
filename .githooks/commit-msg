@@ -1,0 +1,16 @@
+#!/usr/bin/env python
+from subprocess import check_output
+from os import system
+print('\n')
+try :
+    with open('count', 'r') as file:
+        count=int(file.read())
+except:
+    count=0
+print('nouveau commit avec le ticket: '+str(count)+"\net l'identifiant: ")
+count+=1
+with open('count', 'w') as file:
+    file.write(str(count))
+
+print(check_output(['cat', '.git/logs/HEAD']).decode("utf-8").split('\n')[-2].split(' ')[1])
+print('\n')
